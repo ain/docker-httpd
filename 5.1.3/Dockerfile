@@ -28,7 +28,8 @@ RUN apt-get install -y build-essential \
   libpng12-dev \
   libxpm4 \
   libxpm-dev \
-  libmysqlclient-dev
+  libmysqlclient-dev \
+  mysql-client
 
 RUN cd /tmp && wget http://ftp.gnu.org/gnu/bison/bison-2.1.tar.gz \
   && tar xzvf bison-2.1.tar.gz \
