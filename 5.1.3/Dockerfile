@@ -75,3 +75,8 @@ RUN cd /tmp && wget "http://museum.php.net/php5/php-$PHP_VERSION.tar.gz" \
   && make \
   && make install \
   && make clean
+
+# TODO: copy final httpd.conf
+# COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
+
+RUN ln -s /var/www /usr/local/apache2/htdocs
