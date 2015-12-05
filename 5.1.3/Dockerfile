@@ -80,4 +80,6 @@ RUN cd /tmp && wget "http://museum.php.net/php5/php-$PHP_VERSION.tar.gz" \
 # TODO: copy final httpd.conf
 # COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 
+# TODO: copy final php.ini
+
 RUN ln -s /var/www /usr/local/apache2/htdocs
