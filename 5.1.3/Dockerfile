@@ -30,7 +30,7 @@ RUN apt-get install -y build-essential \
   libxpm-dev \
   libmysqlclient-dev \
   mysql-client \
-  sendmail
+  ssmtp
 
 RUN cd /tmp && wget https://www.apache.org/dist/httpd/httpd-2.2.31.tar.gz \
   && tar xzvf httpd-2.2.31.tar.gz \
@@ -85,5 +85,7 @@ RUN cd /tmp && wget "http://museum.php.net/php5/php-$PHP_VERSION.tar.gz" \
 COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
 
 COPY ./php.ini /usr/local/lib/php.ini
+
+RUN echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
 
 RUN ln -s /usr/local/apache2/htdocs /var/www
