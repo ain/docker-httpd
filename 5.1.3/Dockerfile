@@ -34,8 +34,7 @@ RUN apt-get install -y build-essential \
 
 RUN cd /tmp && wget https://www.apache.org/dist/httpd/httpd-2.2.31.tar.gz \
   && tar xzvf httpd-2.2.31.tar.gz \
-  && /usr/local/apache2/bin/apxs -c -i /tmp/httpd-2.2.31/modules/mappers/mod_rewrite.c \
-  && echo "LoadModule rewrite_module modules/mod_rewrite.so" >> /usr/local/apache2/conf/httpd.conf
+  && /usr/local/apache2/bin/apxs -c -i /tmp/httpd-2.2.31/modules/mappers/mod_rewrite.c
 
 RUN cd /tmp && wget http://ftp.gnu.org/gnu/bison/bison-2.1.tar.gz \
   && tar xzvf bison-2.1.tar.gz \
@@ -83,8 +82,7 @@ RUN cd /tmp && wget "http://museum.php.net/php5/php-$PHP_VERSION.tar.gz" \
   && make install \
   && make clean
 
-# TODO: copy final httpd.conf
-# COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
 
 # TODO: copy final php.ini
 
