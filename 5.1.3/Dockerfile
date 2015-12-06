@@ -29,7 +29,8 @@ RUN apt-get install -y build-essential \
   libxpm4 \
   libxpm-dev \
   libmysqlclient-dev \
-  mysql-client
+  mysql-client \
+  sendmail
 
 RUN cd /tmp && wget http://ftp.gnu.org/gnu/bison/bison-2.1.tar.gz \
   && tar xzvf bison-2.1.tar.gz \
