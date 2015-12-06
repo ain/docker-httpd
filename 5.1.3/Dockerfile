@@ -32,6 +32,11 @@ RUN apt-get install -y build-essential \
   mysql-client \
   sendmail
 
+RUN cd /tmp && wget https://www.apache.org/dist/httpd/httpd-2.2.31.tar.gz \
+  && tar xzvf httpd-2.2.31.tar.gz \
+  && /usr/local/apache2/bin/apxs -c -i /tmp/httpd-2.2.31/modules/mappers/mod_rewrite.c \
+  && echo "LoadModule rewrite_module modules/mod_rewrite.so" >> /usr/local/apache2/conf/httpd.conf
+
 RUN cd /tmp && wget http://ftp.gnu.org/gnu/bison/bison-2.1.tar.gz \
   && tar xzvf bison-2.1.tar.gz \
   && cd bison-2.1 \
