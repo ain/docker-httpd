@@ -88,5 +88,3 @@ COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
 COPY ./php.ini /usr/local/lib/php.ini
 
 RUN echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
-
-RUN ln -s /usr/local/apache2/htdocs /var/www
