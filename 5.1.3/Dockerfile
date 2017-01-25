@@ -1,6 +1,7 @@
 FROM httpd:2.2
 
 ENV PHP_VERSION 5.1.3
+ENV HTTPD_VERSION 2.2.32
 
 RUN echo "deb http://httpredir.debian.org/debian wheezy main" > /etc/apt/sources.list.d/wheezy.list
 RUN apt-get update && apt-get install -t wheezy -y libxml2 \
@@ -32,9 +33,9 @@ RUN apt-get install -y build-essential \
   mysql-client \
   ssmtp
 
-RUN cd /tmp && wget https://www.apache.org/dist/httpd/httpd-2.2.31.tar.gz \
-  && tar xzvf httpd-2.2.31.tar.gz \
-  && /usr/local/apache2/bin/apxs -c -i /tmp/httpd-2.2.31/modules/mappers/mod_rewrite.c
+RUN cd /tmp && wget "https://www.apache.org/dist/httpd/httpd-$HTTPD_VERSION.tar.gz" \
+  && tar xzvf "httpd-$HTTPD_VERSION.tar.gz" \
+  && /usr/local/apache2/bin/apxs -c -i "/tmp/httpd-$HTTPD_VERSION/modules/mappers/mod_rewrite.c"
 
 RUN cd /tmp && wget http://ftp.gnu.org/gnu/bison/bison-2.1.tar.gz \
   && tar xzvf bison-2.1.tar.gz \
@@ -45,7 +46,7 @@ RUN cd /tmp && wget http://ftp.gnu.org/gnu/bison/bison-2.1.tar.gz \
   && make clean
 
 RUN apt-get install -y libfreetype6-dev
-RUN cd /tmp && wget http://iweb.dl.sourceforge.net/project/freetype/freetype2/2.6/freetype-2.6.tar.gz \
+RUN cd /tmp && wget http://download.savannah.gnu.org/releases/freetype/freetype-2.6.tar.gz \
   && tar xzvf freetype-2.6.tar.gz \
   && cd freetype-2.6 \
   && ./configure \
