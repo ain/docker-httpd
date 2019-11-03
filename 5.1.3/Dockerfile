@@ -3,8 +3,8 @@ FROM httpd:2.2
 ENV PHP_VERSION 5.1.3
 
 RUN echo "deb http://httpredir.debian.org/debian wheezy main" > /etc/apt/sources.list.d/wheezy.list
-RUN apt-get update && apt-get install -t wheezy -y libxml2=2.8.0+dfsg1-7+wheezy4 \
-  libxml2-dev=2.8.0+dfsg1-7+wheezy4 \
+RUN apt-get update && apt-get install -t wheezy -y libxml2 \
+  libxml2-dev \
   libxpm4 \
   libxpm-dev \
   libxslt1.1 \
@@ -32,7 +32,7 @@ RUN apt-get install -y build-essential \
   mysql-client \
   ssmtp
 
-RUN cd /tmp && wget https://www.apache.org/dist/httpd/httpd-2.2.31.tar.gz \
+RUN cd /tmp && wget http://archive.apache.org/dist/httpd/httpd-2.2.31.tar.gz \
   && tar xzvf httpd-2.2.31.tar.gz \
   && /usr/local/apache2/bin/apxs -c -i /tmp/httpd-2.2.31/modules/mappers/mod_rewrite.c
 
